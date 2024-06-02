@@ -47,7 +47,7 @@
 
 // Memos Start
 var memo = {
-    host: 'https://memos.wowow.club/api/',
+    host: 'https://memos.wowow.club/api/memo1',
     limit: '30',
     creatorId: 'obbHr5yRy3Remckg6zDHPlLqynho',
     domId: '#memos',
