@@ -47,9 +47,9 @@
 
 // Memos Start
 var memo = {
-    host: 'https://me.edui.fun',
+    host: 'https://memos.wowow.club',
     limit: '30',
-    creatorId: '101',
+    creatorId: 'obbHr5yRy3Remckg6zDHPlLqynho',
     domId: '#memos',
     username: '故人博客',
     name: 'Apricity'
