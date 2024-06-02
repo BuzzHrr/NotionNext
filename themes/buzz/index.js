@@ -240,12 +240,25 @@ const LayoutArchive = props => {
  * @param {*} props
  * @returns
  */
-const LayoutMemos = (props) => {
+const LayoutMemos = props => {
+  const { lock, validPassword } = props
+  const { locale, fullWidth } = useGlobal()
+  
+  const [hasCode, setHasCode] = useState(false)
+
+  useEffect(() => {
+    const codeElements = document.querySelectorAll('[class^="language-"]')
+    setHasCode(codeElements.length > 0)
+  }, [fullWidth])
+  
+  const commentEnable = siteConfig('COMMENT_WALINE_SERVER_URL')
+  
   const memoPageInfo = {
-    id: "9ecc78643def47bcvabeg5fn26304679", // 因为引入了评论互动，所以需要一个ID来对应加载页面评论，这里使用Notion这个菜单的pageID
-    type: "Memos",
+    id: "ab4715740aec4dcf996e0ed87d0a712e", 
+    type: "memos",
     title: "我的说说",
   };
+
   return (
     <>
       <div className={`w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600 article`}>
