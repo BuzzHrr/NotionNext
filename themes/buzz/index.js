@@ -248,59 +248,48 @@ const LayoutMemos = (props) => {
   };
   return (
     <>
-      <div
-        className={`article h-full w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600`}>
-        {/* 文章锁 */}
-          <div id='article-wrapper' className='mx-auto md:w-full md:px-5'>
-            {/* 文章主体 */}
+      <div className={`w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600 article`}>
+        {lock && <ArticleLock validPassword={validPassword} />}
+
+        {!lock && (
+          <div
+            id="article-wrapper"
+            className="overflow-x-auto flex-grow mx-auto md:w-full md:px-5 "
+          >
             <article
               itemScope
-              itemType='https://schema.org/Movie'
-              data-wow-delay='.2s'
-              className='wow fadeInUp'>
+              itemType="https://schema.org/Movie"
+              data-wow-delay=".2s"
+              className="wow fadeInUp subpixel-antialiased overflow-y-hidden"
+            >
               {/* Notion文章主体 */}
-               {/* Notion文章主体 */}
-        <section className='justify-center mx-auto max-w-2xl lg:max-w-full'>
-            <BlogMemos {...props}/>
-        </section>
-
-              {/* 分享 */}
-              <ShareBar post={post} />
-              {post?.type === 'Post' && (
-                <div className='px-5'>
-                  {/* 版权 */}
-                  <PostCopyright {...props} />
-                  {/* 文章推荐 */}
-                  <PostRecommend {...props} />
-                </div>
-              )}
+              <section className="px-5 justify-center mx-auto">
+                <WWAds orientation="horizontal" className="w-full" />
+                <BlogMemos {...props}/>
+                <WWAds orientation="horizontal" className="w-full" />
+              </section>
             </article>
 
-            {/* 上一篇\下一篇文章 */}
-            <PostAdjacent {...props} />
-
-            {/* 评论区 */}
-            {fullWidth ? null : (
-              <div className={`${commentEnable && post ? '' : 'hidden'}`}>
-                <hr className='my-4 border-dashed' />
+            {fullWidth
+              ? null
+              : <div className={`${commentEnable && memoPageInfo ? '' : 'hidden'}`}>
+                <hr className="my-4 border-dashed" />
                 {/* 评论区上方广告 */}
-                <div className='py-2'>
-                  <AdSlot />
+                <div className="py-2">
+                    <AdSlot />
                 </div>
                 {/* 评论互动 */}
-                <div className='duration-200 overflow-x-auto px-5'>
-                  <div className='text-2xl dark:text-white'>
-                    <i className='fas fa-comment mr-1' />
+                <div className="duration-200 overflow-x-auto px-5">
+                  <div className="text-2xl dark:text-white">
+                    <i className="fas fa-comment mr-1" />
                     {locale.COMMON.COMMENTS}
                   </div>
-                  <Comment frontMatter={post} className='' />
+                  <Comment frontMatter={memoPageInfo} />
                 </div>
-              </div>
-            )}
+              </div>}
           </div>
-        )
+        )}
       </div>
-
       <FloatTocButton {...props} />
     </>
   )
