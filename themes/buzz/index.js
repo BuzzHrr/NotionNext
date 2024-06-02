@@ -5,7 +5,6 @@
  *  1. 开启方式 在blog.config.js 将主题配置为 `HEO`
  *  2. 更多说明参考此[文档](https://docs.tangly1024.com/article/notionnext-heo)
  */
-import BlogMemos from './components/BlogMemos'
 import Comment from '@/components/Comment'
 import { AdSlot } from '@/components/GoogleAdsense'
 import { HashTag } from '@/components/HeroIcons'
@@ -22,6 +21,7 @@ import { Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import BlogMemos from './components/BlogMemos'
 import BlogPostArchive from './components/BlogPostArchive'
 import BlogPostListPage from './components/BlogPostListPage'
 import BlogPostListScroll from './components/BlogPostListScroll'
@@ -251,9 +251,6 @@ const LayoutMemos = (props) => {
       <div
         className={`article h-full w-full ${fullWidth ? '' : 'xl:max-w-5xl'} ${hasCode ? 'xl:w-[73.15vw]' : ''} lg:hover:shadow lg:border rounded-2xl lg:px-2 lg:py-4 bg-white dark:bg-[#18171d] dark:border-gray-600`}>
         {/* 文章锁 */}
-        {lock && <PostLock validPassword={validPassword} />}
-
-        {!lock && (
           <div id='article-wrapper' className='mx-auto md:w-full md:px-5'>
             {/* 文章主体 */}
             <article
@@ -262,11 +259,10 @@ const LayoutMemos = (props) => {
               data-wow-delay='.2s'
               className='wow fadeInUp'>
               {/* Notion文章主体 */}
-              <section className='px-5 py-5 justify-center mx-auto'>
-                <WWAds orientation='horizontal' className='w-full' />
-                {post && <NotionPage post={post} />}
-                <WWAds orientation='horizontal' className='w-full' />
-              </section>
+               {/* Notion文章主体 */}
+        <section className='justify-center mx-auto max-w-2xl lg:max-w-full'>
+            <BlogMemos {...props}/>
+        </section>
 
               {/* 分享 */}
               <ShareBar post={post} />
@@ -302,7 +298,7 @@ const LayoutMemos = (props) => {
               </div>
             )}
           </div>
-        )}
+        )
       </div>
 
       <FloatTocButton {...props} />
