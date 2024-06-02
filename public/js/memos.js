@@ -47,9 +47,9 @@
 
 // Memos Start
 var memo = {
-    host: 'https://memos.wowow.club/api/memo1',
+    host: 'https://memos.wowow.club',
     limit: '30',
-    creatorId: 'obbHr5yRy3Remckg6zDHPlLqynho',
+    creatorId: '2596',
     domId: '#memos',
     username: '故人博客',
     name: 'Apricity'
