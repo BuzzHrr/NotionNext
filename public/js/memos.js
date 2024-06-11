@@ -47,12 +47,12 @@
 
 // Memos Start
 var memo = {
-    host: 'https://memos.wowow.club',
-    limit: '30',
-    creatorId: '2474',
+    host: 'https://buzzmemos.zeabur.app',
+    limit: '10',
+    creatorId: '1',
     domId: '#memos',
-    username: '故人博客',
-    name: 'Apricity'
+    username: 'BUZZ',
+    name: '尘歌'
 }
 if (typeof (memos) !== "undefined") {
     for (var key in memos) {
